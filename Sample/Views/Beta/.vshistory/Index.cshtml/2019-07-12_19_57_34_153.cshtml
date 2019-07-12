@@ -1,0 +1,20 @@
+@{
+	ViewData["Title"] = "This is super-secret beta stuff";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<!-- Inject the service using DI  -->
+@inject Microsoft.FeatureManagement.IFeatureManager _featureManager;
+
+<nav>
+	<ul>
+		<!-- Check if the feature is enabled  -->
+		@if (_featureManager.IsEnabled(FeatureFlags.Beta))
+		{
+			<li class="nav-item">
+				<a class="nav-link text-dark" asp-controller="Beta" asp-action="Index">Beta</a>
+			</li>
+		}
+	</ul>
+</nav>

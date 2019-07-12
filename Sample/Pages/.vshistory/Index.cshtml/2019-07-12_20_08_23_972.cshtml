@@ -1,0 +1,40 @@
+@page
+@model Sample.Pages.IndexModel
+@{
+	ViewData["Title"] = "Home page";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+	<h1 class="display-4">@Model.WelcomeMessage</h1>
+	<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+@addTagHelper *, Sample
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+
+<!-- Inject the service using DI  -->
+@inject Microsoft.FeatureManagement.IFeatureManager FeatureManager;
+
+<nav>
+	<ul>
+		<!-- Check if the feature is enabled  -->
+		@if (FeatureManager.IsEnabled(Sample.FeatureManagement.ConstFeatureFlags.Beta))
+		{
+			<li class="nav-item">
+				<a class="nav-link text-dark" asp-controller="Beta" asp-action="Index">Beta</a>
+			</li>
+		}
+	</ul>
+
+	<ul>
+		<!-- Check if the feature is enabled using FeatureTagHelper -->
+		<feature name="@Sample.FeatureManagement.ConstFeatureFlags.Beta">
+			<li class="nav-item">
+				<a class="nav-link text-dark" asp-area="" asp-controller="Beta" asp-action="Index">Beta</a>
+			</li>
+		</feature>
+	</ul>
+</nav>

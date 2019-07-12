@@ -1,0 +1,94 @@
+{
+	"Logging": {
+		"LogLevel": {
+			"Default": "Information",
+			"Microsoft": "Warning",
+			"Microsoft.Hosting.Lifetime": "Information"
+		}
+	},
+	"AllowedHosts": "*",
+
+	// Define feature flags in config file
+	"FeatureManagement": {
+
+		"Home": true,
+
+		"NewWelcomeBanner": false,
+
+		"CustomViewData": true,
+
+		"Beta1": true,
+
+		"Beta2": {
+			"EnabledFor": [
+				{
+					"Name": "Browser",
+					"Parameters": { // This json object maps to a strongly typed configuration class
+						"AllowedBrowsers": [ "Chrome", "Edge" ]
+					}
+				}
+			]
+		},
+
+		"Beta": {
+			"EnabledFor": [
+				{
+					"Name": "Claims",
+					"Parameters": {
+						"RequiredClaims": [ "Internal" ]
+					}
+				}
+			]
+		},
+
+		"ContentEnhancement": {
+			"EnabledFor": [
+				{
+					"Name": "TimeWindow",
+					"Parameters": {
+						"Start": "Wed, 01 May 2019 13:59:59 GMT",
+						"End": "Mon, 01 July 2019 00:00:00 GMT"
+					}
+				}
+			]
+		},
+
+		"EnhancedPipeline": {
+			"EnabledFor": [
+				{
+					"Name": "Microsoft.Percentage",
+					"Parameters": { // This json object maps to a strongly typed configuration class
+						"Value": 50
+					}
+				}
+			]
+		},
+
+		"ChristmasBanner": {
+			"EnabledFor": [
+				{
+					"Name": "Microsoft.TimeWindow",
+					"Parameters": {
+						"Start": "26 Dec 2019 02:00:00 +00:00",
+						"End": "29 Dec 2019 01:00:00 +00:00"
+					}
+				}
+			]
+		},
+
+		"FancyFonts": {
+			"EnabledFor": [
+				{
+					"Name": "Microsoft.Percentage",
+					"Parameters": {
+						"Value": 10
+					}
+				}
+			]
+		}
+
+
+
+	}
+
+}

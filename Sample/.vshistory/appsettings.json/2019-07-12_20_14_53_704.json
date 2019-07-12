@@ -1,0 +1,33 @@
+{
+	"Logging": {
+		"LogLevel": {
+			"Default": "Information",
+			"Microsoft": "Warning",
+			"Microsoft.Hosting.Lifetime": "Information"
+		}
+	},
+	"AllowedHosts": "*",
+
+	"FeatureManagement": {
+
+		"NewWelcomeBanner": false,
+
+		"Beta": true,
+
+		"ChristmasBanner": {
+			"EnabledFor": [
+				{
+					"Name": "Microsoft.TimeWindow",
+					"Parameters": {
+						"Start": "26 Dec 2019 02:00:00 +00:00",
+						"End": "29 Dec 2019 01:00:00 +00:00"
+					}
+				}
+			]
+		}
+
+
+
+	}
+
+}
