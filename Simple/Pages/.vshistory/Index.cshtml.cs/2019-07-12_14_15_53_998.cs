@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.FeatureManagement;
 
+using Simple.FeatureManagement;
+
 namespace Simple.Pages
 {
 	public class IndexModel : PageModel
@@ -13,18 +15,11 @@ namespace Simple.Pages
 		public void OnGet()
 		{
 			// Reference the feature flags using nameof()
-			var isEnabledEnum = FeatureManager.IsEnabled(nameof(FeatureManagement.EnumFeatureFlags.NewWelcomeBanner));
-
-			// No need for nameof() at the call site
-			var isEnabledConst = FeatureManager.IsEnabled(FeatureManagement.ConstFeatureFlags.NewWelcomeBanner);
+			var isEnabled = FeatureManager.IsEnabled(nameof(FeatureFlags.NewWelcomeBanner));
 
 			WelcomeMessage = FeatureManager.IsEnabled("NewWelcomeBanner")
 				? "Welcome to the Beta"
 				: "Welcome";
-
-			WelcomeMessage = isEnabledEnum ? "Welcome to the Beta" : "Welcome";
-
-			WelcomeMessage = isEnabledConst ? "Welcome to the Beta" : "Welcome";
 		}
 	}
 }

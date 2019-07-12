@@ -16,15 +16,13 @@ namespace Simple.Pages
 			var isEnabledEnum = FeatureManager.IsEnabled(nameof(FeatureManagement.EnumFeatureFlags.NewWelcomeBanner));
 
 			// No need for nameof() at the call site
-			var isEnabledConst = FeatureManager.IsEnabled(FeatureManagement.ConstFeatureFlags.NewWelcomeBanner);
+			var isEnabledConst = FeatureManager.IsEnabled(FeatureManagement.FeatureFlags.NewWelcomeBanner);
 
-			WelcomeMessage = FeatureManager.IsEnabled("NewWelcomeBanner")
-				? "Welcome to the Beta"
-				: "Welcome";
+			//WelcomeMessage = FeatureManager.IsEnabled("NewWelcomeBanner")
+			//	? "Welcome to the Beta"
+			//	: "Welcome";
 
-			WelcomeMessage = isEnabledEnum ? "Welcome to the Beta" : "Welcome";
-
-			WelcomeMessage = isEnabledConst ? "Welcome to the Beta" : "Welcome";
+			WelcomeMessage = isEnabled ? "Welcome to the Beta" : "Welcome";
 		}
 	}
 }
